@@ -34,7 +34,7 @@ namespace RemoteFork.Requests {
             return new UriBuilder {
                 Scheme = request.Scheme,
                 Host = request.Host.Host,
-                Port = request.Host.Port.Value,
+                Port = request.Host.Port ?? 80,
                 Path = "/",
             }.ToString();
         }
@@ -43,7 +43,7 @@ namespace RemoteFork.Requests {
             return new UriBuilder {
                 Scheme = request.Scheme,
                 Host = request.Host.Host,
-                Port = request.Host.Port.Value,
+                Port = request.Host.Port ?? 80,
                 Path = HttpUtility.UrlPathEncode(path),
                 Query = Tools.Tools.QueryParametersToString(query)
             }.ToString();
