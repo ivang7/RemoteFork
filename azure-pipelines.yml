@@ -12,6 +12,8 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  Parameters.RestoreBuildProjects: '**/*.csproj'
+  Parameters.TestProjects: '**/*[Tt]ests/*.csproj'
 
 steps:
 - task: UseDotNet@2
@@ -21,7 +23,7 @@ steps:
   displayName: Restore
   inputs:
     command: 'restore'
-    projects: '**/*.csproj'
+    projects: '$(Parameters.RestoreBuildProjects)'
     feedsToUse: 'select'
 
 - task: DotNetCoreCLI@2
